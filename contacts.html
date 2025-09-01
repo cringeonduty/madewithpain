@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts — MADE WITH PAIN Tattoo artist based in Bavaria, Germany</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html" class="logo">MADE WITH PAIN</a>
+      <p id="subtitle" class="subtitle">Tattoo artist based in Bavaria, Germanya</p>
+    </div>
+    <nav>
+      <a id="portfolio-btn" href="index.html">Portfolio</a>
+      <a id="contacts-btn" href="contacts.html" class="active">Contacts</a>
+      <button id="lang-toggle" onclick="toggleLang()">DE</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <div id="contact-text"></div>
+      <div class="contact-links">
+        <a href="https://wa.me/+351910886940" target="_blank">WhatsApp</a>
+        <a href="https://www.instagram.com/need4quit" target="_blank">Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; MADE WITH PAIN 2025
+  </footer>
+
+  <script>
+    let currentLang = 'en';
+    const texts = {
+      en: {
+        contact: "Hello! I’m Andre 👋, a tattoo artist. To start working on your project, contact me via WhatsApp or Instagram. Describe your idea, share references and images you like. Don't worry about a ready-made design — I will develop a custom design according to your request.\n\nYou can also let me know your preferred time for the session — ASAP or a specific time period, this will help with planning.",
+        subtitle: "Tattoo artist based in Bavaria, Germany",
+        portfolio: "Portfolio",
+        contacts: "Contacts"
+      },
+      de: {
+        contact: "Hallo! Ich heiße Andre 👋 und ich bin Tätowierer. Um mit der Arbeit an Ihrem Projekt zu beginnen, kontaktieren Sie mich über WhatsApp oder Instagram. Beschreiben Sie Ihre Idee, teilen Sie Referenzen und Bilder, die Ihnen gefallen. Machen Sie sich keine Sorgen über ein fertiges Design — ich entwickele eine individuelle Skizze nach Ihren Wünschen.\n\nSie können mir auch Ihren preferred Zeitpunkt für die Sitzung mitteilen — ASAP oder einen bestimmten Zeitraum, das hilft bei der Planung.",
+        subtitle: "Tätowierer aus Bayern, Deutschland",
+        portfolio: "Portfolio",
+        contacts: "Kontakt"
+      }
+    };
+
+    function setLang(lang){
+      currentLang = lang;
+      document.getElementById('contact-text').innerText = texts[lang].contact;
+      document.getElementById('subtitle').innerText = texts[lang].subtitle;
+      document.getElementById('portfolio-btn').innerText = texts[lang].portfolio;
+      document.getElementById('contacts-btn').innerText = texts[lang].contacts;
+      document.getElementById('lang-toggle').innerText = (lang === 'en') ? 'DE' : 'EN';
+    }
+
+    function toggleLang(){
+      setLang(currentLang === 'en' ? 'de' : 'en');
+    }
+
+    setLang(currentLang);
+  </script>
+</body>
+</html>

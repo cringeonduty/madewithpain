@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andre — Contemporary Tattoo artist based in Bavaria, Germany</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html" class="logo">MADE WITH PAIN</a>
+      <p id="subtitle" class="subtitle">Tattoo artist based in Bavaria, Germany</p> <!-- Добавлен id -->
+    </div>
+    <nav>
+      <a id="contacts-btn" href="contacts.html">Contacts</a> <!-- Добавлен id -->
+      <button id="lang-toggle" onclick="toggleLang()">DE</button>
+    </nav>
+  </header>
+
+  <main id="gallery"></main>
+
+  <div id="modal" class="modal" onclick="closeModal()">
+    <span class="close">&times;</span>
+    <img id="modal-img" src="" alt="">
+    <div id="modal-tags"></div>
+  </div>
+
+  <footer>
+    &copy; MADE WITH PAIN 2025
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Код для перевода
+    let currentLang = 'en';
+    const texts = {
+      en: {
+        subtitle: "Tattoo artist based in Bavaria, Germany",
+        contacts: "Contacts",
+        title: "Andre — Contemporary Tattoo artist based in Bavaria, Germany"
+      },
+      de: {
+        subtitle: "Tätowierer aus Bayern, Deutschland",
+        contacts: "Kontakt",
+        title: "Andre — Zeitgenössischer Tätowierer in Bayern"
+      }
+    };
+
+    function setLang(lang) {
+      currentLang = lang;
+      
+      // Обновляем элементы на странице
+      document.getElementById('subtitle').innerText = texts[lang].subtitle;
+      document.getElementById('contacts-btn').innerText = texts[lang].contacts;
+      document.title = texts[lang].title;
+      document.getElementById('lang-toggle').innerText = (lang === 'en') ? 'DE' : 'EN';
+    }
+
+    function toggleLang() {
+      setLang(currentLang === 'en' ? 'de' : 'en');
+    }
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+      setLang(currentLang);
+    });
+  </script>
+</body>
+</html>

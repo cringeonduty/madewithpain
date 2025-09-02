@@ -46,7 +46,7 @@ const works = [
   { src: "images/panter2021.webp", tags: ["graphic", "2021", "fresh"] },
   { src: "images/peony2019.webp", tags: ["neotraditional", "2019", "fresh"] },
   { src: "images/pepe2024.webp", tags: ["contemporary", "2024", "fresh"] },
-  { src: "images/raven2020.webp", tags: ["realistic", "2020", "fresh"] },
+  { src: "images/raven22020.webp", tags: ["realistic", "2020", "fresh"] },
   { src: "images/scorpion2024.webp", tags: ["contemporary", "2024", "fresh"] },
   { src: "images/snakes2024.webp", tags: ["neotraditional", "2024", "fresh"] },
   { src: "images/spyder2018.webp", tags: ["realistic", "2018", "fresh"] },

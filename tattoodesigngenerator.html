@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tattoo Design Generator</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #1a1a1a;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+    .site-header {
+      width: 100%;
+      padding: 20px 0 20px 20px;
+      background-color: #2a2a2a;
+      color: #fff;
+      font-size: 28px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .logo-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .logo-link:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .site-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 20px;
+    }
+
+    .wheels-wrapper {
+      background-color: #333;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .wheels-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    canvas {
+      border-radius: 50%;
+      background: white;
+      width: 300px;
+      height: 300px;
+    }
+
+    button#spin {
+      padding: 12px 24px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    button#spin:hover {
+      background-color: #777;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffcc00;
+      min-height: 30px;
+      text-align: center;
+    }
+
+    .site-footer {
+      width: 100%;
+      padding: 15px 0;
+      background-color: #2a2a2a;
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .site-footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .wheels-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+
+      canvas {
+        width: 90vw;
+        max-width: 300px;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo-link">Tattoo Design Generator</a>
+  </header>
+
+  <main class="site-main">
+    <div class="wheels-wrapper">
+      <div class="wheels-container">
+        <canvas id="wheel1" width="300" height="300"></canvas>
+        <canvas id="wheel2" width="300" height="300"></canvas>
+        <canvas id="wheel3" width="300" height="300"></canvas>
+      </div>
+    </div>
+
+    <button id="spin">Spin!</button>
+
+    <div id="result"></div>
+  </main>
+
+  <footer class="site-footer">
+    visit my gallery on 
+    <a href="https://madewithpain.fun" target="_blank">madewithpain.fun 🫂</a>
+  </footer>
+
+  <script>
+    const wheels = [
+      {
+        canvas: document.getElementById("wheel1"),
+        angle: 0,
+        spinning: false,
+        sectors: [
+          { color: "#5f5f5f", label: "Skull" },
+          { color: "#4f4f4f", label: "Pocket watch" },
+          { color: "#3f3f3f", label: "Ship" },
+          { color: "#5f5f5f", label: "Lighthouse" },
+          { color: "#4f4f4f", label: "Japanese mask" },
+          { color: "#3f3f3f", label: "Used Honda Civic" },
+          { color: "#5f5f5f", label: "Tiger" },
+          { color: "#4f4f4f", label: "Horse" },
+          { color: "#3f3f3f", label: "Angel" }
+        ]
+      },
+      {
+        canvas: document.getElementById("wheel2"),
+        angle: 0,
+        spinning: false,
+        sectors: [
+          { color: "#5f5f5f", label: "Roses" },
+          { color: "#4f4f4f", label: "Leaves" },
+          { color: "#3f3f3f", label: "Chain" },
+          { color: "#5f5f5f", label: "Band" },
+          { color: "#4f4f4f", label: "Clouds" },
+          { color: "#3f3f3f", label: "Geometric" },
+          { color: "#5f5f5f", label: "Splashes" },
+          { color: "#4f4f4f", label: "Birds" },
+          { color: "#3f3f3f", label: "Lettering" }
+        ]
+      },
+      {
+        canvas: document.getElementById("wheel3"),
+        angle: 0,
+        spinning: false,
+        sectors: [
+          { color: "#5f5f5f", label: "Realistic" },
+          { color: "#4f4f4f", label: "Traditional" },
+          { color: "#3f3f3f", label: "Japanese" },
+          { color: "#5f5f5f", label: "Neotraditional" },
+          { color: "#4f4f4f", label: "Fineline" },
+          { color: "#3f3f3f", label: "Trash polka" },
+          { color: "#5f5f5f", label: "Watercolour" },
+          { color: "#4f4f4f", label: "Chicano" }
+        ]
+      }
+    ];
+
+    function drawWheel(ctx, diameter, angle, sectors) {
+      const radius = diameter / 2;
+      const arc = (2 * Math.PI) / sectors.length;
+      ctx.clearRect(0, 0, diameter, diameter);
+
+      sectors.forEach((sector, i) => {
+        const start = angle + i * arc;
+        ctx.beginPath();
+        ctx.fillStyle = sector.color;
+        ctx.moveTo(radius, radius);
+        ctx.arc(radius, radius, radius, start, start + arc);
+        ctx.lineTo(radius, radius);
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(radius, radius);
+        ctx.rotate(start + arc / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#fff";
+        ctx.font = "12px sans-serif";
+        ctx.fillText(sector.label, radius - 10, 10);
+        ctx.restore();
+      });
+
+      const pointerOffset = -5;
+      const pointerWidth = 30;
+      const pointerHeight = 18;
+      const baseY = radius - (diameter / 2) + pointerOffset;
+      const apexY = baseY + pointerHeight;
+
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.moveTo(radius - pointerWidth / 2, baseY);
+      ctx.lineTo(radius + pointerWidth / 2, baseY);
+      ctx.lineTo(radius, apexY);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function spinAll() {
+      if (wheels.some(w => w.spinning)) return;
+
+      document.getElementById("result").textContent = "";
+
+      wheels.forEach(wheel => {
+        wheel.spinning = true;
+        wheel.spinTime = 0;
+        wheel.spinTimeTotal = Math.random() * 3000 + 4000;
+        wheel.spinAngleStart = Math.random() * 10 + 10;
+      });
+
+      function animate() {
+        let allStopped = true;
+
+        wheels.forEach(wheel => {
+          if (!wheel.spinning) return;
+
+          wheel.spinTime += 30;
+          if (wheel.spinTime >= wheel.spinTimeTotal) {
+            wheel.spinning = false;
+            return;
+          }
+          const spinAngle = wheel.spinAngleStart - easeOut(wheel.spinTime, 0, wheel.spinAngleStart, wheel.spinTimeTotal);
+          wheel.angle += (spinAngle * Math.PI) / 180;
+
+          allStopped = false;
+        });
+
+        wheels.forEach(wheel => {
+          const ctx = wheel.canvas.getContext("2d");
+          drawWheel(ctx, wheel.canvas.width, wheel.angle, wheel.sectors);
+        });
+
+        if (!allStopped) {
+          requestAnimationFrame(animate);
+        } else {
+          const [obj, detail, style] = wheels.map(wheel => {
+            const degrees = (wheel.angle * 180) / Math.PI + 90;
+            const arcDeg = 360 / wheel.sectors.length;
+            const index = Math.floor((wheel.sectors.length - (degrees % 360) / arcDeg) % wheel.sectors.length);
+            return wheel.sectors[index].label;
+          });
+
+          document.getElementById("result").textContent =
+            `${obj} with ${detail} in ${style} style`;
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    function easeOut(t, b, c, d) {
+      const ts = (t /= d) * t;
+      const tc = ts * t;
+      return b + c * (tc + -3 * ts + 3 * t);
+    }
+
+    wheels.forEach(wheel => {
+      drawWheel(wheel.canvas.getContext("2d"), wheel.canvas.width, wheel.angle, wheel.sectors);
+    });
+
+    document.getElementById("spin").addEventListener("click", spinAll);
+  </script>
+</body>
+</html>

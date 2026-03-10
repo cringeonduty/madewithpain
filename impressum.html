@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum (Legal Notice) — MADE WITH PAIN</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html" class="logo">MADE WITH PAIN</a>
+      <p class="subtitle">Tattoo Artist based in Bavaria, Germany</p>
+    </div>
+    <nav>
+      <a href="index.html">Portfolio</a>
+      <a href="contacts.html">Contacts</a>
+      <button id="lang-toggle" onclick="toggleLang()">DE</button>
+    </nav>
+  </header>
+
+  <main class="legal-page">
+    <h1 id="impressum-title">Impressum (Legal Notice)</h1>
+
+    <div id="impressum-content">
+      <!-- English version -->
+      <div class="lang-content" data-lang="en">
+        <p><strong>Website Operator:</strong><br>
+        Andrii Borysiuk<br>
+        Bernauergasse 12<br>
+        94315 Straubing<br>
+        Germany</p>
+
+        <p><strong>Contact:</strong><br>
+        Email: cringeonduty@gmail.com</p>
+
+        <p><strong>Responsible according to § 55 RStV:</strong><br>
+        Andrii Borysiuk</p>
+
+        <p>All content on this website is protected by copyright.</p>
+
+        <p>Last updated: March 2026</p>
+      </div>
+
+      <!-- German version -->
+      <div class="lang-content" data-lang="de" style="display:none;">
+        <p><strong>Website-Betreiber:</strong><br>
+        Andrii Borysiuk<br>
+        Bernauergasse 12<br>
+        94315 Straubing<br>
+        Deutschland</p>
+
+        <p><strong>Kontakt:</strong><br>
+        E-Mail: cringeonduty@gmail.com</p>
+
+        <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
+        Andrii Borysiuk</p>
+
+        <p>Alle Inhalte auf dieser Website sind urheberrechtlich geschützt.</p>
+
+        <p>Zuletzt aktualisiert: März 2026</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="site-map">
+    <div class="site-map-container">
+      <div class="footer-links">
+        <a href="index.html">Portfolio</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="datenschutz.html">Datenschutzerklärung</a>
+        <a href="impressum.html">Impressum</a>
+      </div>
+      <div class="copyright">
+        &copy; 2026 MADE WITH PAIN
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Language toggle
+    let currentLang = 'en';
+    const texts = {
+      en: { subtitle: "Tattoo Artist based in Bavaria, Germany", contacts: "Contacts", portfolio: "Portfolio", title: "Legal Notice (Impressum) — MADE WITH PAIN" },
+      de: { subtitle: "Tattoo Artist aus Bayern, Deutschland", contacts: "Kontakt", portfolio: "Portfolio", title: "Impressum — MADE WITH PAIN" }
+    };
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.querySelector('.subtitle').innerText = texts[lang].subtitle;
+      document.querySelector('nav a[href="index.html"]').innerText = texts[lang].portfolio;
+      document.querySelector('nav a[href="contacts.html"]').innerText = texts[lang].contacts;
+      document.title = texts[lang].title;
+
+      // Language toggle
+      document.querySelectorAll('.lang-content').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'block' : 'none';
+      });
+    }
+
+    function toggleLang() {
+      setLang(currentLang === 'en' ? 'de' : 'en');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+  </script>
+</body>
+</html>

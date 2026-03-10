@@ -1,8 +1,8 @@
-/* ---- Загальні стилі ---- */
+/* ---- styles ---- */
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100vh; 
   font-family: Arial, sans-serif;
   background: #fff;
   color: #111;
@@ -10,8 +10,15 @@ html, body {
   flex-direction: column;
 }
 
+body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 main {
-  flex: 1; /* займає простір між header і footer */
+  flex: 1 0 auto; 
+  width: 100%;
 }
 
 /* ---- Header ---- */
@@ -22,6 +29,7 @@ header {
   padding: 20px 40px;
   flex-wrap: wrap;
   background: #fff;
+  flex-shrink: 0; 
 }
 
 .logo-container {
@@ -42,7 +50,7 @@ header {
   margin-top: 5px;
 }
 
-/* Навігація */
+/* navi */
 nav {
   display: flex;
   align-items: center;
@@ -61,7 +69,7 @@ nav a.active {
   font-weight: 700;
 }
 
-#lang-toggle {
+#lang-toggle, .back-btn {
   cursor: pointer;
   background: #111;
   color: #fff;
@@ -71,7 +79,19 @@ nav a.active {
   font-weight: bold;
 }
 
-/* ---- Галерея (masonry) ---- */
+.back-btn {
+  background: none;
+  border: 1px solid #111;
+  color: #111;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* ---- gallery (masonry) ---- */
 #gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -80,7 +100,7 @@ nav a.active {
   margin: 20px auto;
   grid-auto-rows: 10px;
   grid-auto-flow: dense;
-  padding: 0 20px; /* відступи від країв */
+  padding: 0 20px; 
 }
 
 .item .content {
@@ -97,7 +117,7 @@ nav a.active {
   object-fit: cover;
 }
 
-/* Теги без # */
+/* tags without # */
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tags span {
   padding: 3px 8px;
@@ -114,7 +134,7 @@ nav a.active {
 #modal-tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
 #modal-tags span { padding: 3px 8px; border-radius: 20px; font-size: 0.7rem; font-weight: 500; color: white; cursor: pointer; }
 
-/* ---- Модалка ---- */
+/* ---- modal ---- */
 .modal {
   display: none;
   position: fixed;
@@ -146,7 +166,7 @@ nav a.active {
   cursor: pointer;
 }
 
-/* ---- Контакти ---- */
+/* ---- contacts ---- */
 .contact-section {
   max-width: 600px;
   margin: 40px auto;
@@ -165,16 +185,116 @@ nav a.active {
   font-weight: bold;
 }
 
-/* ---- Footer ---- */
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 0.8rem;
-  background: #fff;
-  flex-shrink: 0; /* футер завжди внизу */
+/* === Legal Pages (Impressum, Datenschutz) === */
+.legal-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  flex: 1 0 auto; 
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* --- Мобільна адаптивність --- */
+.legal-page h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.legal-page h2 {
+  font-size: 1.3rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.legal-page p {
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* === Show More Button === */
+.show-more-container {
+  text-align: center;
+  margin: 30px 0 50px 0;
+  flex-shrink: 0;
+}
+
+.show-more-btn {
+  background: #111;
+  color: #fff;
+  border: 2px solid #111;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.show-more-btn:hover {
+  background: #fff;
+  color: #111;
+}
+
+/* === Site Map / Footer Links === */
+.site-map {
+  background: #f5f5f5;
+  padding: 15px 20px;
+  margin-top: 30px;
+  border-top: 1px solid #ddd;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.site-map-container {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  color: #666;
+  font-size: 11px;
+  text-align: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.site-map {
+  flex-shrink: 0;
+}
+
+/* --- mobi adapt --- */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -190,6 +310,16 @@ footer {
   #gallery {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 15px;
+  }
+  
+  .site-map-container {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .footer-links {
+    justify-content: center;
   }
 }
 

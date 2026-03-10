@@ -1,4 +1,4 @@
-// === Масив робіт ===
+// === works ===
 const works = [
   { src: "images/birdshealed2017.webp", tags: ["neotraditional", "2017", "healed"], alt: "high quality healed neotraditional birds tattoo on torso, done in Straubing near Nuremberg and Munich, Bavaria, Germany — visible in Berlin, Hamburg, Cologne, Frankfurt, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen, Bremen, Dresden, Hanover" },
   { src: "images/gendalf2023.webp", tags: ["contemporary", "2019", "fresh"], alt: "contemporary pepefrog gendalf tattoo on arm, done in Straubing near Nuremberg and Munich, Bavaria, Germany — visible in Berlin, Hamburg, Cologne, Frankfurt, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen, Bremen, Dresden, Hanover" },
@@ -129,7 +129,7 @@ const works = [
   { src: "images/leaves2019.webp", tags: ["neotraditional", "2019", "fresh"], alt: "elegant neotraditional leaves and peony tattoo on arm, created in Straubing near Nuremberg and Munich, Bavaria, Germany — visible in Berlin, Hamburg, Cologne, Frankfurt, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen, Bremen, Dresden, Hanover" },
 ];
 
-// === Кольори для тегів ===
+// tag colors ===
 const tagColors = {
   blackwork: "#222222",
   dotwork: "#3b82f6",
@@ -154,50 +154,134 @@ const tagColors = {
 
 function getTagColor(tag){ return tagColors[tag] || "#555"; }
 
-// === Галерея ===
+// === gallery ===
 const gallery = document.getElementById("gallery");
+let currentFilter = null;
+let itemsToShow = 9;
+let allWorks = works;
+let isLoading = false;
+
+// button Show More
+const showMoreContainer = document.createElement("div");
+showMoreContainer.className = "show-more-container";
+showMoreContainer.style.textAlign = "center";
+showMoreContainer.style.margin = "30px 0";
+
+const showMoreBtn = document.createElement("button");
+showMoreBtn.className = "show-more-btn";
+showMoreBtn.textContent = "Show More";
+showMoreBtn.onclick = loadMore;
+
+showMoreContainer.appendChild(showMoreBtn);
 
 function renderGallery(filterTag = null){
+  currentFilter = filterTag;
+  itemsToShow = 9; 
+  
+  let filteredWorks = filterTag ? works.filter(w => w.tags.includes(filterTag)) : works;
+  allWorks = filteredWorks;
+  
   gallery.innerHTML = "";
-  works.filter(w => !filterTag || w.tags.includes(filterTag)).forEach(work=>{
-    const item = document.createElement("div");
-    item.className = "item";
-    const altText = work.tags.join(", "); // SEO: alt тег з тегами
-    item.innerHTML = `
-      <div class="content">
-        <img src="${work.src}" alt="${altText}">
-        <div class="tags">
-          ${work.tags.map(tag=>`<span style="background:${getTagColor(tag)}" onclick="filterFromModal(event,'${tag}')">#${tag}</span>`).join("")}
-        </div>
-      </div>
-    `;
-    item.querySelector('img').addEventListener('load',()=>resizeMasonryItem(item));
-    item.addEventListener("click",()=>openModal(work));
-    gallery.appendChild(item);
+  
+  const worksToShow = filteredWorks.slice(0, itemsToShow);
+  
+  worksToShow.forEach(work => {
+    appendWorkToGallery(work);
   });
+  
+  updateShowMoreButton();
 }
 
-// === Модалка ===
+function appendWorkToGallery(work) {
+  const item = document.createElement("div");
+  item.className = "item";
+  const altText = work.tags.join(", ");
+  item.innerHTML = `
+    <div class="content">
+      <img src="${work.src}" alt="${altText}" loading="lazy">
+      <div class="tags">
+        ${work.tags.map(tag => `<span style="background:${getTagColor(tag)}" onclick="filterFromModal(event,'${tag}')">#${tag}</span>`).join("")}
+      </div>
+    </div>
+  `;
+  
+  const img = item.querySelector('img');
+  img.addEventListener('load', () => {
+    resizeMasonryItem(item);
+  });
+  
+  if (img.complete) {
+    resizeMasonryItem(item);
+  }
+  
+  item.addEventListener("click", () => openModal(work));
+  gallery.appendChild(item);
+}
+
+function loadMore() {
+  if (isLoading) return;
+  isLoading = true;
+  
+  const scrollPosition = window.scrollY;
+  const galleryHeight = gallery.offsetHeight;
+  
+  const currentCount = document.querySelectorAll('#gallery .item').length;
+  const nextWorks = allWorks.slice(currentCount, currentCount + 9);
+  
+  nextWorks.forEach(work => {
+    appendWorkToGallery(work);
+  });
+  
+  itemsToShow = currentCount + nextWorks.length;
+  
+  setTimeout(() => {
+    resizeAllMasonryItems();
+    
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: 'auto' 
+    });
+    
+    isLoading = false;
+  }, 100);
+  
+  updateShowMoreButton();
+}
+
+function updateShowMoreButton() {
+  const currentCount = document.querySelectorAll('#gallery .item').length;
+  
+  if (allWorks.length > currentCount) {
+    if (!showMoreContainer.parentNode) {
+      gallery.after(showMoreContainer);
+    }
+  } else {
+    if (showMoreContainer.parentNode) {
+      showMoreContainer.parentNode.removeChild(showMoreContainer);
+    }
+  }
+}
+
 function openModal(work){
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modal-img");
   const modalTags = document.getElementById("modal-tags");
   modal.style.display = "flex";
   modalImg.src = work.src;
-  modalImg.alt = work.tags.join(", "); // SEO: alt тег у модалці
+  modalImg.alt = work.tags.join(", ");
   modalTags.innerHTML = work.tags.map(tag=>`<span style="background:${getTagColor(tag)}" onclick="filterFromModal(event,'${tag}')">#${tag}</span>`).join("");
 }
 
-function closeModal(){ document.getElementById("modal").style.display = "none"; }
+function closeModal(){ 
+  document.getElementById("modal").style.display = "none"; 
+}
 
-// === Фільтрація ===
 function filterFromModal(event, tag){
   event.stopPropagation();
   closeModal();
   renderGallery(tag);
 }
 
-// === Masonry логіка ===
 function resizeMasonryItem(item){
   const grid = document.getElementById('gallery');
   const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
@@ -212,6 +296,12 @@ function resizeAllMasonryItems(){
   document.querySelectorAll('#gallery .item').forEach(item=>resizeMasonryItem(item));
 }
 
-// === Запуск ===
-window.addEventListener('load',()=>{ renderGallery(); });
-window.addEventListener('resize',resizeAllMasonryItems);
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(resizeAllMasonryItems, 100);
+});
+
+window.addEventListener('load', () => { 
+  renderGallery(); 
+});

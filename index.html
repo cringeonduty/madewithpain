@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrii — Contemporary Tattoo Artist</title>
+  <title>Andre — Contemporary Tattoo artist based in Bayern, Germany</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <header>
     <div class="logo-container">
       <a href="index.html" class="logo">MADE WITH PAIN</a>
-      <p id="subtitle" class="subtitle">Tattoo Artist</p> <!-- Добавлен id -->
+      <p id="subtitle" class="subtitle">Tattoo Artist based in Bayern, Germany</p>
     </div>
     <nav>
-      <a id="contacts-btn" href="contacts.html">Contacts</a> <!-- Добавлен id -->
+      <a id="portfolio-btn" href="index.html" class="active">Portfolio</a>
+      <a id="contacts-btn" href="contacts.html">Contacts</a>
       <button id="lang-toggle" onclick="toggleLang()">DE</button>
     </nav>
   </header>
@@ -26,33 +28,47 @@
     <div id="modal-tags"></div>
   </div>
 
-  <footer>
-    &copy; MADE WITH PAIN 2025
-  </footer>
+  <!-- Site Map / Footer Links -->
+<footer class="site-map">
+  <div class="site-map-container">
+    <div class="footer-links">
+      <a href="index.html">Portfolio</a>
+      <a href="contacts.html">Contacts</a>
+      <a href="datenschutz.html">Datenschutzerklärung</a>
+      <a href="impressum.html">Impressum</a>
+    </div>
+    <div class="copyright">
+      &copy; 2026 MADE WITH PAIN
+    </div>
+  </div>
+</footer>
 
   <script src="script.js"></script>
 
   <script>
-    // Код для перевода
+    // translation
     let currentLang = 'en';
     const texts = {
       en: {
-        subtitle: "Tattoo Artist",
+        subtitle: "Tattoo Artist based in Bavaria, Germany",
         contacts: "Contacts",
-        title: "Andrii — Contemporary Tattoo Artist"
+        portfolio: "Portfolio",
+        title: "Andre — Contemporary Tattoo artist based in Bayern, Germany"
       },
       de: {
-        subtitle: "Tattoo Artist",
+        subtitle: "Tattoo Artist aus Bayern, Deutschland",
         contacts: "Kontakt",
-        title: "Andrii — Zeitgenössischer Tattoo Artist"
+        portfolio: "Portfolio",
+        title: "Andre — Zeitgenössischer Tätowierer in Bayern, Deutschland"
       }
     };
 
     function setLang(lang) {
       currentLang = lang;
       
-      // Обновляем элементы на странице
+      // update elements on the page
       document.getElementById('subtitle').innerText = texts[lang].subtitle;
+      document.getElementById('portfolio-btn').innerText = texts[lang].portfolio;
       document.getElementById('contacts-btn').innerText = texts[lang].contacts;
       document.title = texts[lang].title;
       document.getElementById('lang-toggle').innerText = (lang === 'en') ? 'DE' : 'EN';
@@ -62,7 +78,7 @@
       setLang(currentLang === 'en' ? 'de' : 'en');
     }
 
-    // Инициализация при загрузке страницы
+    // initialization
     document.addEventListener('DOMContentLoaded', function() {
       setLang(currentLang);
     });

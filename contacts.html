@@ -3,14 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacts — MADE WITH PAIN Tattoo Artist</title>
+  <title>Contacts — MADE WITH PAIN Tattoo artist based in Bavaria, Germany</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    /* Additional styles for the map */
+    .map-container {
+      margin: 30px 0 20px;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .map-container iframe {
+      display: block;
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+    .address {
+      font-size: 0.95rem;
+      margin-top: 8px;
+      color: #666;
+    }
+    .contact-section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center; /* Center all content */
+    }
+    .contact-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 25px 0 15px;
+      align-items: center;
+      justify-content: center; /* Center the buttons */
+    }
+    /* All buttons in portfolio style (black, rounded) */
+    .contact-links a,
+    .contact-links .email-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 20px; /* Rounded like portfolio */
+      cursor: pointer;
+      font-family: inherit;
+      transition: background-color 0.2s;
+      line-height: 1.4;
+    }
+    .contact-links a:hover,
+    .contact-links .email-btn:hover {
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+    }
+    /* Keep contact text left-aligned for readability */
+    #contact-text {
+      text-align: left;
+      white-space: pre-line;
+    }
+    /* Adaptation to existing site style */
+    .site-map {
+      margin-top: 60px;
+      border-top: 1px solid #eee;
+    }
+    /* Copy notification */
+    .copy-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    .copy-toast.show {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="logo-container">
       <a href="index.html" class="logo">MADE WITH PAIN</a>
-      <p id="subtitle" class="subtitle">Tattoo Artist</p>
+      <p id="subtitle" class="subtitle">Tattoo Artist based in Bavaria, Germany</p>
     </div>
     <nav>
       <a id="portfolio-btn" href="index.html">Portfolio</a>
@@ -22,32 +110,65 @@
   <main>
     <section class="contact-section">
       <div id="contact-text"></div>
+      
+      <!-- Map showing studio location -->
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2653.085703628319!2d12.56792531564965!3d48.88133877928772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a4d3f8e8e8e8e9%3A0x123456789abcdef!2sTheresienplatz%2031%2C%2094315%20Straubing!5e0!3m2!1sen!2sde!4v1620000000000!5m2!1sen!2sde"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+      
+      <div class="address">📍 Theresienpl. 31, 94315 Straubing, Germany</div>
+      
       <div class="contact-links">
-        <a href="https://forms.gle/k5KTbb3Tv3aBc2Jw7" target="_blank">Request Form</a>
-        <a href="https://wa.me/+351910886940" target="_blank">WhatsApp</a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/+4915202622476" target="_blank">WhatsApp</a>
+        <!-- Instagram -->
         <a href="https://www.instagram.com/andrew_borisyuk" target="_blank">Instagram</a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/andrewborisyuktattoo" target="_blank">Facebook</a>
+        <!-- Email button (copies address) - now with rounded corners -->
+        <button class="email-btn" id="emailCopyBtn">Email</button>
       </div>
     </section>
   </main>
 
-  <footer>
-    &copy; MADE WITH PAIN 2025
-  </footer>
+  <!-- Site Map / Footer Links -->
+  <div class="site-map">
+    <div class="site-map-container">
+      <div class="footer-links">
+        <a href="index.html">Portfolio</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="datenschutz.html">Datenschutzerklärung</a>
+        <a href="impressum.html">Impressum</a>
+      </div>
+      <div class="copyright">
+        &copy; 2026 MADE WITH PAIN
+      </div>
+    </div>
+  </div>
+
+  <!-- Copy notification -->
+  <div class="copy-toast" id="copyToast">Email copied to clipboard!</div>
 
   <script>
     let currentLang = 'en';
     const texts = {
       en: {
-        contact: "Hello! I’m Andrii 👋, a tattoo artist. To start working on your project, fill out the form or contact me via WhatsApp or Instagram. Describe your idea, share references and images you like. Don't worry about a ready-made design — I will develop a custom design according to your request.\n\nYou can also let me know your preferred time for the session — ASAP or a specific time period, this will help with planning.",
-        subtitle: "Tattoo Artist",
+        contact: "Hello! I'm Andre 👋, tattoo artist. I'd love to bring your idea to life. To get started, simply reach out via WhatsApp or Instagram. Tell me about your concept, share any references or images you love. No need for a finished design - I'll create a unique sketch just for you, based on your vision.\n\nLet me know your preferred timing - whether you're flexible or have a specific timeframe in mind. That helps me plan better!\n\nStudio location (appointments only) 👇",
+        subtitle: "Tattoo artist based in Bavaria, Germany",
         portfolio: "Portfolio",
-        contacts: "Contacts"
+        contacts: "Contacts",
+        emailCopied: "Email copied to clipboard!"
       },
       de: {
-        contact: "Hallo! Ich heiße Andrii 👋 und ich bin Tattoo Artist. Um mit der Arbeit an Ihrem Projekt zu beginnen, füllen Sie das Formular aus oder kontaktieren Sie mich über WhatsApp oder Instagram. Beschreiben Sie Ihre Idee, teilen Sie Referenzen und Bilder, die Ihnen gefallen. Machen Sie sich keine Sorgen über ein fertiges Design — ich entwickele eine individuelle Skizze nach Ihren Wünschen.\n\nSie können mir auch Ihren bevorzugten Zeitpunkt für die Sitzung mitteilen — ASAP oder einen bestimmten Zeitraum, das hilft bei der Planung.",
-        subtitle: "Tattoo Artist",
+        contact: "Hallo! Ich bin Andre 👋, Tattoo Artist. Ich freue mich darauf, Ihre Idee zu verwirklichen. Um zu starten, kontaktieren Sie mich einfach via WhatsApp oder Instagram. Erzählen Sie mir von Ihrem Konzept, teilen Sie Referenzen oder Bilder, die Ihnen gefallen. Sie brauchen keinen fertigen Entwurf - ich erstelle eine individuelle Skizze basierend auf Ihren Vorstellungen.\n\nLassen Sie mich auch wissen, wann Sie sich die Sitzung vorstellen - ob Sie flexibel sind oder einen bestimmten Zeitraum im Kopf haben. Das hilft mir bei der Planung!\n\nStudio-Standort (nur Termine) 👇",
+        subtitle: "Tattoo Artist aus Bayern, Deutschland",
         portfolio: "Portfolio",
-        contacts: "Kontakt"
+        contacts: "Kontakt",
+        emailCopied: "E-Mail in Zwischenablage kopiert!"
       }
     };
 
@@ -63,6 +184,30 @@
     function toggleLang(){
       setLang(currentLang === 'en' ? 'de' : 'en');
     }
+
+    // Email copy
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailBtn = document.getElementById('emailCopyBtn');
+      const toast = document.getElementById('copyToast');
+      const emailAddress = 'cringeonduty@gmail.com'; // Replace with real email
+      
+      emailBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(emailAddress).then(function() {
+          // Show notification
+          toast.textContent = texts[currentLang].emailCopied;
+          toast.classList.add('show');
+          
+          // Hide after 2 seconds
+          setTimeout(function() {
+            toast.classList.remove('show');
+          }, 2000);
+        }).catch(function(err) {
+          console.error('Failed to copy: ', err);
+          // Fallback for older browsers
+          prompt('Press Ctrl+C to copy email:', emailAddress);
+        });
+      });
+    });
 
     setLang(currentLang);
   </script>

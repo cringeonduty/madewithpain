@@ -1,9 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andre — Contemporary Tattoo artist based in Bayern, Germany</title>
+  <title>Andre — Tattoo Artist in Straubing, Bayern | Made with Pain</title>
+  <meta name="description" content="Andre – Tattoo Artist in Bayern. Schwarz-Grau Realismus, Blackwork, Fineline, Porträt. Straubing · Regensburg · Deggendorf · Nürnberg.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://madewithpain.fun/">
+
+  <!-- Schema.org: freiberuflicher Tattoo Artist, Hauptstandort Straubing -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Andre",
+    "jobTitle": "Tattoo Artist",
+    "url": "https://madewithpain.fun",
+    "description": "Freiberuflicher Tattoo Artist mit Hauptstandort Straubing. Spezialisiert auf Schwarz-Grau Realismus, Blackwork, Fineline und Porträt-Tattoo.",
+    "knowsAbout": [
+      "Schwarz-Grau Realismus Tattoo",
+      "Blackwork Tattoo",
+      "Fineline Tattoo",
+      "Porträt Tattoo",
+      "Realistic Tattoo",
+      "Blackout Tattoo",
+      "Japanese Tattoo",
+      "Anime Tattoo",
+      "Chicano Tattoo",
+      "Lettering Tattoo"
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Straubing" },
+      { "@type": "City", "name": "Regensburg" },
+      { "@type": "City", "name": "Deggendorf" },
+      { "@type": "City", "name": "Bogen" },
+      { "@type": "City", "name": "Plattling" },
+      { "@type": "City", "name": "Neutraubling" },
+      { "@type": "City", "name": "Landshut" },
+      { "@type": "City", "name": "Nürnberg" },
+      { "@type": "AdministrativeArea", "name": "Niederbayern" },
+      { "@type": "AdministrativeArea", "name": "Bayern" }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -20,6 +60,15 @@
     </nav>
   </header>
 
+  <!-- SEO: sichtbar nur für Suchmaschinen -->
+  <h1 class="seo-hidden">Tattoo Artist Straubing – Schwarz-Grau, Blackwork, Fineline | Andre</h1>
+  <p class="seo-hidden">
+    Andre ist freiberuflicher Tattoo Artist mit Hauptstandort Straubing, Bayern.
+    Spezialisiert auf Schwarz-Grau Realismus, Blackwork, Fineline, Porträt-Tattoo, Blackout, Japanisches Tattoo, Anime, Chicano und Lettering.
+    Kunden kommen aus Straubing, Regensburg, Deggendorf, Bogen, Plattling, Neutraubling, Landshut und Nürnberg.
+    Auch erreichbar für Kunden aus Aiterhofen, Atting, Feldkirchen, Parkstetten, Schwarzach, Wörth an der Donau, Metten, Osterhofen, Hengersberg, Mitterfels, Hunderdorf, Kirchroth sowie der gesamten Region Niederbayern und Oberpfalz.
+  </p>
+
   <main id="gallery"></main>
 
   <div id="modal" class="modal" onclick="closeModal()">
@@ -29,19 +78,19 @@
   </div>
 
   <!-- Site Map / Footer Links -->
-<footer class="site-map">
-  <div class="site-map-container">
-    <div class="footer-links">
-      <a href="index.html">Portfolio</a>
-      <a href="contacts.html">Contacts</a>
-      <a href="datenschutz.html">Datenschutzerklärung</a>
-      <a href="impressum.html">Impressum</a>
+  <footer class="site-map">
+    <div class="site-map-container">
+      <div class="footer-links">
+        <a href="index.html">Portfolio</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="datenschutz.html">Datenschutzerklärung</a>
+        <a href="impressum.html">Impressum</a>
+      </div>
+      <div class="copyright">
+        &copy; 2026 MADE WITH PAIN
+      </div>
     </div>
-    <div class="copyright">
-      &copy; 2026 MADE WITH PAIN
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="script.js"></script>
 
@@ -53,20 +102,18 @@
         subtitle: "Tattoo Artist based in Bavaria, Germany",
         contacts: "Contacts",
         portfolio: "Portfolio",
-        title: "Andre — Contemporary Tattoo artist based in Bayern, Germany"
+        title: "Andre — Tattoo Artist in Straubing, Bayern | Made with Pain"
       },
       de: {
-        subtitle: "Tattoo Artist aus Bayern, Deutschland",
+        subtitle: "Tattoo Artist aus Straubing, Bayern",
         contacts: "Kontakt",
         portfolio: "Portfolio",
-        title: "Andre — Zeitgenössischer Tätowierer in Bayern, Deutschland"
+        title: "Andre — Tätowierer in Straubing, Bayern | Made with Pain"
       }
     };
 
     function setLang(lang) {
       currentLang = lang;
-      
-      // update elements on the page
       document.getElementById('subtitle').innerText = texts[lang].subtitle;
       document.getElementById('portfolio-btn').innerText = texts[lang].portfolio;
       document.getElementById('contacts-btn').innerText = texts[lang].contacts;

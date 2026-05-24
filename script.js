@@ -216,7 +216,7 @@ function buildAltText(work) {
   const styleLabel = styleFromTag || styles[Math.floor(Math.random() * styles.length)];
   const locationLabel = locations[Math.floor(Math.random() * locations.length)];
 
-  return `${styleLabel} – Andre Tattoo Artist ${locationLabel}, Bayern`;
+  return `${styleLabel} – Andrew Borisyuk Tattoo Artist ${locationLabel}, Bayern`;
 }
 
 function renderGallery(filterTag = null){

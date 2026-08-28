@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://madewithpain.fun/sitemap.xml
+Sitemap: https://madewithpain.com/sitemap.xml

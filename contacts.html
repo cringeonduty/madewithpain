@@ -30,7 +30,7 @@
       max-width: 600px;
       margin: 0 auto;
       padding: 20px;
-      text-align: center; /* Center all content */
+      text-align: center;
     }
     .contact-links {
       display: flex;
@@ -38,9 +38,8 @@
       flex-wrap: wrap;
       margin: 25px 0 15px;
       align-items: center;
-      justify-content: center; /* Center the buttons */
+      justify-content: center;
     }
-    /* All buttons in portfolio style (black, rounded) */
     .contact-links a,
     .contact-links .email-btn {
       display: inline-block;
@@ -51,7 +50,7 @@
       font-weight: 500;
       font-size: 0.95rem;
       border: none;
-      border-radius: 20px; /* Rounded like portfolio */
+      border-radius: 20px;
       cursor: pointer;
       font-family: inherit;
       transition: background-color 0.2s;
@@ -63,17 +62,14 @@
       color: #fff;
       text-decoration: none;
     }
-    /* Keep contact text left-aligned for readability */
     #contact-text {
       text-align: left;
       white-space: pre-line;
     }
-    /* Adaptation to existing site style */
     .site-map {
       margin-top: 60px;
       border-top: 1px solid #eee;
     }
-    /* Copy notification */
     .copy-toast {
       position: fixed;
       bottom: 20px;
@@ -102,6 +98,7 @@
     </div>
     <nav>
       <a id="portfolio-btn" href="index.html">Portfolio</a>
+      <a id="info-btn" href="info.html">Info</a>
       <a id="contacts-btn" href="contacts.html" class="active">Contacts</a>
       <button id="lang-toggle" onclick="toggleLang()">DE</button>
     </nav>
@@ -123,13 +120,9 @@
       <div class="address">📍 Theresienpl. 31, 94315 Straubing, Germany</div>
       
       <div class="contact-links">
-        <!-- WhatsApp -->
         <a href="https://wa.me/+4915202622476" target="_blank">WhatsApp</a>
-        <!-- Instagram -->
         <a href="https://www.instagram.com/andrew_borisyuk" target="_blank">Instagram</a>
-        <!-- Facebook -->
         <a href="https://www.facebook.com/andrewborisyuktattoo" target="_blank">Facebook</a>
-        <!-- Email button (copies address) - now with rounded corners -->
         <button class="email-btn" id="emailCopyBtn">Email</button>
       </div>
     </section>
@@ -140,6 +133,7 @@
     <div class="site-map-container">
       <div class="footer-links">
         <a href="index.html">Portfolio</a>
+        <a href="info.html">Info</a>
         <a href="contacts.html">Contacts</a>
         <a href="datenschutz.html">Datenschutzerklärung</a>
         <a href="impressum.html">Impressum</a>
@@ -150,23 +144,25 @@
     </div>
   </div>
 
-  <!-- Copy notification -->
   <div class="copy-toast" id="copyToast">Email copied to clipboard!</div>
 
   <script>
     let currentLang = 'en';
+
     const texts = {
       en: {
-        contact: "Hello! I'm Andrew Borisyuk 👋, tattoo artist. I'd love to bring your idea to life. To get started, simply reach out via WhatsApp or Instagram. Tell me about your concept, share any references or images you love. No need for a finished design - I'll create a unique sketch just for you, based on your vision.\n\nLet me know your preferred timing - whether you're flexible or have a specific timeframe in mind. That helps me plan better!\n\nTattoo Studio in Straubing (appointments only) 👇",
+        contact: "Please send me an email with a description of your idea and, if available, any relevant references or examples. Please also let me know approximately when you would like to have an appointment for a tattoo session or consultation.\n\nYou are also welcome to visit my Instagram page to see more of my work. If you have an urgent question or need to reach me quickly, you can contact me via WhatsApp.\n\nConsultations and tattoo sessions at a tattoo studio in Straubing (by appointment only) 👇",
         subtitle: "Tattoo artist based in Bavaria, Germany",
         portfolio: "Portfolio",
+        info: "Info",
         contacts: "Contacts",
         emailCopied: "Email copied to clipboard!"
       },
       de: {
-        contact: "Hallo! Ich bin Andrew Borisyuk 👋, Tattoo Artist. Ich freue mich darauf, Ihre Idee zu verwirklichen. Um zu starten, kontaktieren Sie mich einfach via WhatsApp oder Instagram. Erzählen Sie mir von Ihrem Konzept, teilen Sie Referenzen oder Bilder, die Ihnen gefallen. Sie brauchen keinen fertigen Entwurf - ich erstelle eine individuelle Skizze basierend auf Ihren Vorstellungen.\n\nLassen Sie mich auch wissen, wann Sie sich die Sitzung vorstellen - ob Sie flexibel sind oder einen bestimmten Zeitraum im Kopf haben. Das hilft mir bei der Planung!\n\nTattoo Studio in Straubing (nur nach Terminvereinbarung) 👇",
-        subtitle: "Tattoo Artist aus Bayern, Deutschland",
+        contact: "Bitte senden Sie mir eine E-Mail mit einer Beschreibung Ihrer Idee und, falls vorhanden, entsprechenden Referenzen oder Beispielen. Geben Sie bitte auch ungefähr an, wann Sie einen Termin für eine Tattoo-Sitzung oder Beratung wünschen.\n\nSie können auch gerne meine Instagram-Seite besuchen, um sich weitere Arbeiten von mir anzusehen. Wenn Sie eine dringende Frage haben oder mich schnell erreichen müssen, können Sie mir über WhatsApp schreiben.\n\nBeratungen und Tattoo-Sitzungen in einem Tattoo-Studio in Straubing (nur nach Terminvereinbarung) 👇",
+        subtitle: "Tattoo Artist in Bayern, Deutschland",
         portfolio: "Portfolio",
+        info: "Info",
         contacts: "Kontakt",
         emailCopied: "E-Mail in Zwischenablage kopiert!"
       }
@@ -177,6 +173,7 @@
       document.getElementById('contact-text').innerText = texts[lang].contact;
       document.getElementById('subtitle').innerText = texts[lang].subtitle;
       document.getElementById('portfolio-btn').innerText = texts[lang].portfolio;
+      document.getElementById('info-btn').innerText = texts[lang].info;
       document.getElementById('contacts-btn').innerText = texts[lang].contacts;
       document.getElementById('lang-toggle').innerText = (lang === 'en') ? 'DE' : 'EN';
     }
@@ -189,21 +186,18 @@
     document.addEventListener('DOMContentLoaded', function() {
       const emailBtn = document.getElementById('emailCopyBtn');
       const toast = document.getElementById('copyToast');
-      const emailAddress = 'bookings@madewithpain.com'; // Replace with real email
+      const emailAddress = 'bookings@madewithpain.com';
       
       emailBtn.addEventListener('click', function() {
         navigator.clipboard.writeText(emailAddress).then(function() {
-          // Show notification
           toast.textContent = texts[currentLang].emailCopied;
           toast.classList.add('show');
           
-          // Hide after 2 seconds
           setTimeout(function() {
             toast.classList.remove('show');
           }, 2000);
         }).catch(function(err) {
           console.error('Failed to copy: ', err);
-          // Fallback for older browsers
           prompt('Press Ctrl+C to copy email:', emailAddress);
         });
       });

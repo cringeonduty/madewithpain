@@ -164,7 +164,9 @@
     }
 
     function copyEmail(){
-      navigator.clipboard.writeText('bookings@madewithpain.com');
+      navigator.clipboard.writeText('bookings@madewithpain.com').then(() => {
+        alert(texts[currentLang].emailCopied);
+      });
     }
 
     setLang(currentLang);

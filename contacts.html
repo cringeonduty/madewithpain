@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18480798088"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18480798088');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacts — MADE WITH PAIN Tattoo artist based in Bavaria, Germany</title>
@@ -70,24 +81,6 @@
       margin-top: 60px;
       border-top: 1px solid #eee;
     }
-    .copy-toast {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-      z-index: 1000;
-    }
-    .copy-toast.show {
-      opacity: 1;
-    }
   </style>
 </head>
 <body>
@@ -123,7 +116,7 @@
         <a href="https://wa.me/+4915202622476" target="_blank">WhatsApp</a>
         <a href="https://www.instagram.com/andrew_borisyuk" target="_blank">Instagram</a>
         <a href="https://www.facebook.com/andrewborisyuktattoo" target="_blank">Facebook</a>
-        <button class="email-btn" id="emailCopyBtn">Email</button>
+        <a class="email-btn" href="mailto:bookings@madewithpain.com">Email</a>
       </div>
     </section>
   </main>
@@ -144,8 +137,6 @@
     </div>
   </div>
 
-  <div class="copy-toast" id="copyToast">Email copied to clipboard!</div>
-
   <script>
     let currentLang = 'en';
 
@@ -155,16 +146,14 @@
         subtitle: "Tattoo artist based in Bavaria, Germany",
         portfolio: "Portfolio",
         info: "Info",
-        contacts: "Contacts",
-        emailCopied: "Email copied to clipboard!"
+        contacts: "Contacts"
       },
       de: {
         contact: "Bitte senden Sie mir eine E-Mail mit einer Beschreibung Ihrer Idee und, falls vorhanden, entsprechenden Referenzen oder Beispielen. Geben Sie bitte auch ungefähr an, wann Sie einen Termin für eine Tattoo-Sitzung oder Beratung wünschen.\n\nSie können auch gerne meine Instagram-Seite besuchen, um sich weitere Arbeiten von mir anzusehen. Wenn Sie eine dringende Frage haben oder mich schnell erreichen müssen, können Sie mir über WhatsApp schreiben.\n\nBeratungen und Tattoo-Sitzungen in einem Tattoo-Studio in Straubing (nur nach Terminvereinbarung) 👇",
         subtitle: "Tattoo Artist in Bayern, Deutschland",
         portfolio: "Portfolio",
         info: "Info",
-        contacts: "Kontakt",
-        emailCopied: "E-Mail in Zwischenablage kopiert!"
+        contacts: "Kontakt"
       }
     };
 
@@ -181,27 +170,6 @@
     function toggleLang(){
       setLang(currentLang === 'en' ? 'de' : 'en');
     }
-
-    // Email copy
-    document.addEventListener('DOMContentLoaded', function() {
-      const emailBtn = document.getElementById('emailCopyBtn');
-      const toast = document.getElementById('copyToast');
-      const emailAddress = 'bookings@madewithpain.com';
-      
-      emailBtn.addEventListener('click', function() {
-        navigator.clipboard.writeText(emailAddress).then(function() {
-          toast.textContent = texts[currentLang].emailCopied;
-          toast.classList.add('show');
-          
-          setTimeout(function() {
-            toast.classList.remove('show');
-          }, 2000);
-        }).catch(function(err) {
-          console.error('Failed to copy: ', err);
-          prompt('Press Ctrl+C to copy email:', emailAddress);
-        });
-      });
-    });
 
     setLang(currentLang);
   </script>

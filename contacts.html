@@ -12,6 +12,25 @@
     gtag('config', 'AW-18480798088');
   </script>
 
+  <!-- Event snippet for Контакт conversion page
+  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18480798088/Am7XCLO6zIkdEIizquxE',
+        'value': 1.0,
+        'currency': 'EUR',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacts — MADE WITH PAIN Tattoo artist based in Bavaria, Germany</title>
@@ -116,7 +135,7 @@
         <a href="https://wa.me/+4915202622476" target="_blank">WhatsApp</a>
         <a href="https://www.instagram.com/andrew_borisyuk" target="_blank">Instagram</a>
         <a href="https://www.facebook.com/andrewborisyuktattoo" target="_blank">Facebook</a>
-        <a class="email-btn" href="mailto:bookings@madewithpain.com">Email</a>
+        <a class="email-btn" href="mailto:bookings@madewithpain.com" onclick="return gtag_report_conversion('mailto:bookings@madewithpain.com');">Email</a>
       </div>
     </section>
   </main>
@@ -146,14 +165,16 @@
         subtitle: "Tattoo artist based in Bavaria, Germany",
         portfolio: "Portfolio",
         info: "Info",
-        contacts: "Contacts"
+        contacts: "Contacts",
+        emailCopied: "Email copied to clipboard!"
       },
       de: {
         contact: "Bitte senden Sie mir eine E-Mail mit einer Beschreibung Ihrer Idee und, falls vorhanden, entsprechenden Referenzen oder Beispielen. Geben Sie bitte auch ungefähr an, wann Sie einen Termin für eine Tattoo-Sitzung oder Beratung wünschen.\n\nSie können auch gerne meine Instagram-Seite besuchen, um sich weitere Arbeiten von mir anzusehen. Wenn Sie eine dringende Frage haben oder mich schnell erreichen müssen, können Sie mir über WhatsApp schreiben.\n\nBeratungen und Tattoo-Sitzungen in einem Tattoo-Studio in Straubing (nur nach Terminvereinbarung) 👇",
         subtitle: "Tattoo Artist in Bayern, Deutschland",
         portfolio: "Portfolio",
         info: "Info",
-        contacts: "Kontakt"
+        contacts: "Kontakt",
+        emailCopied: "E-Mail in Zwischenablage kopiert!"
       }
     };
 

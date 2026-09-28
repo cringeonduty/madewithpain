@@ -2,35 +2,6 @@
 <html lang="en">
 <head>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18480798088"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-18480798088');
-  </script>
-
-  <!-- Event snippet for Contact conversion page
-  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-  <script>
-  function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof(url) != 'undefined') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'conversion', {
-        'send_to': 'AW-18480798088/Am7XCLO6zIkdEIizquxE',
-        'value': 1.0,
-        'currency': 'EUR',
-        'event_callback': callback
-    });
-    return false;
-  }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacts — MADE WITH PAIN Tattoo artist based in Bavaria, Germany</title>
@@ -135,7 +106,7 @@
         <a href="https://wa.me/+4915202622476" target="_blank">WhatsApp</a>
         <a href="https://www.instagram.com/andrew_borisyuk" target="_blank">Instagram</a>
         <a href="https://www.facebook.com/andrewborisyuktattoo" target="_blank">Facebook</a>
-        <a class="email-btn" href="mailto:bookings@madewithpain.com" onclick="var o={done:false,toString:function(){this.done=true;return 'mailto:bookings@madewithpain.com';}};setTimeout(function(){if(!o.done){window.location=o.toString();}},1000);return gtag_report_conversion(o);">Email</a>
+        <a class="email-btn" href="#" onclick="copyEmail(); return false;">Email</a>
       </div>
     </section>
   </main>
@@ -190,6 +161,10 @@
 
     function toggleLang(){
       setLang(currentLang === 'en' ? 'de' : 'en');
+    }
+
+    function copyEmail(){
+      navigator.clipboard.writeText('bookings@madewithpain.com');
     }
 
     setLang(currentLang);

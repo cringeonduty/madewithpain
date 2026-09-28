@@ -55,6 +55,7 @@
     </div>
     <nav>
       <a id="portfolio-btn" href="index.html" class="active">Portfolio</a>
+      <a id="info-btn" href="info.html">Info</a>
       <a id="contacts-btn" href="contacts.html">Contacts</a>
       <button id="lang-toggle" onclick="toggleLang()">DE</button>
     </nav>
@@ -82,6 +83,7 @@
     <div class="site-map-container">
       <div class="footer-links">
         <a href="index.html">Portfolio</a>
+        <a href="info.html">Info</a>
         <a href="contacts.html">Contacts</a>
         <a href="datenschutz.html">Datenschutzerklärung</a>
         <a href="impressum.html">Impressum</a>
@@ -101,12 +103,14 @@
       en: {
         subtitle: "Tattoo Artist in Straubing, Bavaria",
         contacts: "Contacts",
+        info: "Info",
         portfolio: "Portfolio",
         title: "Tattoo Straubing – Andrew Borisyuk Tattoo Artist | Realism, Fineline, Blackwork"
       },
       de: {
-        subtitle: "Tattoo Artist aus Straubing, Bayern",
+        subtitle: "Tattoo Artist in Straubing, Bayern",
         contacts: "Kontakt",
+        info: "Info",
         portfolio: "Portfolio",
         title: "Tattoo Straubing – Andrew Borisyuk Tätowierer | Realismus, Fineline, Blackwork"
       }
@@ -116,6 +120,7 @@
       currentLang = lang;
       document.getElementById('subtitle').innerText = texts[lang].subtitle;
       document.getElementById('portfolio-btn').innerText = texts[lang].portfolio;
+      document.getElementById('info-btn').innerText = texts[lang].info;
       document.getElementById('contacts-btn').innerText = texts[lang].contacts;
       document.title = texts[lang].title;
       document.getElementById('lang-toggle').innerText = (lang === 'en') ? 'DE' : 'EN';

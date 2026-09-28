@@ -12,7 +12,7 @@
     gtag('config', 'AW-18480798088');
   </script>
 
-  <!-- Event snippet for Контакт conversion page
+  <!-- Event snippet for Contact conversion page
   In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
   <script>
   function gtag_report_conversion(url) {
@@ -135,7 +135,7 @@
         <a href="https://wa.me/+4915202622476" target="_blank">WhatsApp</a>
         <a href="https://www.instagram.com/andrew_borisyuk" target="_blank">Instagram</a>
         <a href="https://www.facebook.com/andrewborisyuktattoo" target="_blank">Facebook</a>
-        <a class="email-btn" href="mailto:bookings@madewithpain.com" onclick="return gtag_report_conversion('mailto:bookings@madewithpain.com');">Email</a>
+        <a class="email-btn" href="mailto:bookings@madewithpain.com" onclick="var o={done:false,toString:function(){this.done=true;return 'mailto:bookings@madewithpain.com';}};setTimeout(function(){if(!o.done){window.location=o.toString();}},1000);return gtag_report_conversion(o);">Email</a>
       </div>
     </section>
   </main>

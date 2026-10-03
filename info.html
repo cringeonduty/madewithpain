@@ -109,8 +109,8 @@
 
 <header>
   <div class="logo-container">
-    <a href="index.html" class="logo">MADE WITH PAIN</a>
-    <p id="subtitle" class="subtitle">Tattoo Artist aus Bayern, Deutschland</p>
+    <a href="index.html" class="logo">TATTOO ARTIST ANDREW BORISYUK</a>
+    <p id="subtitle" class="subtitle">Madewithpain · Straubing, Bayern</p>
   </div>
 
   <nav>
@@ -121,13 +121,11 @@
   </nav>
 </header>
 
-
 <main class="info-section">
 
   <h1 data-i18n="h1">
     Andrew Borisyuk – Tattoo Artist in Straubing
   </h1>
-
 
   <div class="photo-block">
 
@@ -171,7 +169,6 @@
 
   </div>
 
-
   <div class="info-text">
 
     <p data-i18n="intro">
@@ -185,7 +182,6 @@
     <p data-i18n="portfolio">
       In meinem Portfolio können Sie einige meiner bisherigen Arbeiten sehen. Ich bin nicht auf einen bestimmten Stil festgelegt. Bei jedem Projekt verbinde ich meine Erfahrung, mein handwerkliches Können und mein eigenes künstlerisches Verständnis mit den Vorstellungen meiner Kunden. Mein Ziel ist es, gemeinsam ein Tattoo zu entwickeln, das genau dem entspricht, was Sie sich für sich selbst wünschen. Dabei nutze ich mein Wissen und meine Erfahrung, um aus Ihrer Idee ein stimmiges und individuell auf Sie abgestimmtes Ergebnis zu schaffen.
     </p>
-
 
     <h2 data-i18n="requestTitle">
       Ihre Anfrage
@@ -203,7 +199,6 @@
       In den meisten Fällen kann ich auf Grundlage dieser Informationen bereits den Preis und den voraussichtlich benötigten Zeitaufwand nennen. In seltenen Fällen ist es notwendig, die Arbeit am Design zunächst abzuschließen, um den genauen Preis festlegen zu können. In jedem Fall erfahren Sie den exakten Preis vor Beginn der Tattoo-Sitzung.
     </p>
 
-
     <h2 data-i18n="sessionTitle">
       Der Termin
     </h2>
@@ -211,7 +206,6 @@
     <p data-i18n="session">
       Für jeden Termin plane ich ausreichend Zeit ein, damit die Arbeit ohne Zeitdruck stattfinden kann. So bleibt auch genügend Zeit, um Fragen, die während der Arbeit entstehen, ausführlich zu beantworten und bei Bedarf Pausen einzulegen.
     </p>
-
 
     <h2 data-i18n="aftercareTitle">
       Nach dem Termin
@@ -225,7 +219,6 @@
       Auch während des Heilungsprozesses stehe ich Ihnen für Fragen und Beratung zur Verfügung und bleibe bis zur vollständigen Abheilung mit Ihnen in Kontakt.
     </p>
 
-
     <p class="info-center" data-i18n="closing">
       Ich freue mich, wenn Sie sich mein Portfolio ansehen und sich einen Eindruck von meiner Arbeit machen.
     </p>
@@ -233,7 +226,6 @@
     <p class="info-center" data-i18n="contactText">
       Ebenso freue ich mich über Ihre Anfrage. Die Möglichkeiten zur Kontaktaufnahme finden Sie auf der Kontaktseite.
     </p>
-
 
     <div class="info-links">
       <a href="index.html" data-i18n="portfolioButton">
@@ -248,7 +240,6 @@
   </div>
 
 </main>
-
 
 <footer class="site-map">
   <div class="site-map-container">
@@ -268,7 +259,6 @@
   </div>
 </footer>
 
-
 <script>
 
 let currentLang = 'de';
@@ -278,7 +268,7 @@ const texts = {
   de: {
 
     subtitle:
-      'Tattoo Artist in Straubing, Bayern',
+      'Madewithpain · Straubing, Bayern',
 
     portfolioBtn:
       'Portfolio',
@@ -347,11 +337,10 @@ const texts = {
       'Andrew Borisyuk – Tattoo Artist in Straubing. Individuelle Tattoo-Projekte, Schwarz-Grau Realismus, Fineline und grafische Tattoos. Termine nach Vereinbarung.'
   },
 
-
   en: {
 
     subtitle:
-      'Tattoo Artist in Straubing, Bavaria',
+      'Madewithpain · Straubing, Bavaria',
 
     portfolioBtn:
       'Portfolio',
@@ -422,7 +411,6 @@ const texts = {
 
 };
 
-
 function setLang(lang) {
 
   currentLang = lang;
@@ -440,7 +428,6 @@ function setLang(lang) {
     description.setAttribute('content', t.metaDescription);
   }
 
-
   document.querySelectorAll('[data-i18n]').forEach(function(element) {
 
     const key = element.getAttribute('data-i18n');
@@ -450,7 +437,6 @@ function setLang(lang) {
     }
 
   });
-
 
   document.getElementById('subtitle').textContent =
     t.subtitle;
@@ -466,7 +452,6 @@ function setLang(lang) {
 
   document.getElementById('lang-toggle').textContent =
     lang === 'de' ? 'EN' : 'DE';
-
 
   document.querySelectorAll('.footer-links a').forEach(function(link) {
 
@@ -488,13 +473,11 @@ function setLang(lang) {
 
 }
 
-
 function toggleLang() {
 
   setLang(currentLang === 'de' ? 'en' : 'de');
 
 }
-
 
 document.addEventListener('DOMContentLoaded', function() {
 

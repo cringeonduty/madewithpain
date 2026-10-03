@@ -1,139 +1,183 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tattoo Straubing – Andrew Borisyuk Tattoo Artist | Realism, Fineline, Blackwork</title>
-  <meta name="description" content="Tattoo Straubing – Andrew Borisyuk Tattoo Artist. Spezialisiert auf Schwarz-Grau Realismus, Fineline und Blackwork. Termine in Straubing, Regensburg und Nürnberg.">
-  <meta name="robots" content="index, follow">
+
+  <title>Tätowierer Straubing – Andrew Borisyuk | Tattoo Artist</title>
+  <meta name="description" content="Andrew Borisyuk – Tätowierer in Straubing, Bayern. Realismus, Fineline und Blackwork. Individuelle Tattoos nach Terminvereinbarung.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://madewithpain.com/">
 
-  <!-- Schema.org: freiberuflicher Tattoo Artist, Hauptstandort Straubing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MADE WITH PAIN">
+  <meta property="og:title" content="Tätowierer Straubing – Andrew Borisyuk">
+  <meta property="og:description" content="Tattoo Artist in Straubing, Bayern.">
+  <meta property="og:url" content="https://madewithpain.com/">
+  <meta property="og:image" content="https://madewithpain.com/images/birds2020.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Andrew Borisyuk",
-    "jobTitle": "Tattoo Artist",
-    "url": "https://madewithpain.com",
-    "description": "Freiberuflicher Tattoo Artist mit Hauptstandort Straubing. Spezialisiert auf Schwarz-Grau Realismus, Blackwork, Fineline und Porträt-Tattoo.",
-    "knowsAbout": [
-      "Schwarz-Grau Realismus Tattoo",
-      "Blackwork Tattoo",
-      "Fineline Tattoo",
-      "Porträt Tattoo",
-      "Realistic Tattoo",
-      "Blackout Tattoo",
-      "Japanese Tattoo",
-      "Anime Tattoo",
-      "Chicano Tattoo",
-      "Lettering Tattoo"
-    ],
-    "areaServed": [
-      { "@type": "City", "name": "Straubing" },
-      { "@type": "City", "name": "Regensburg" },
-      { "@type": "City", "name": "Deggendorf" },
-      { "@type": "City", "name": "Bogen" },
-      { "@type": "City", "name": "Plattling" },
-      { "@type": "City", "name": "Neutraubling" },
-      { "@type": "City", "name": "Landshut" },
-      { "@type": "City", "name": "Nürnberg" },
-      { "@type": "AdministrativeArea", "name": "Niederbayern" },
-      { "@type": "AdministrativeArea", "name": "Bayern" }
+    "@graph": [
+      {
+        "@type": ["TattooParlor", "LocalBusiness"],
+        "@id": "https://madewithpain.com/#business",
+        "name": "MADE WITH PAIN – Andrew Borisyuk",
+        "url": "https://madewithpain.com/",
+        "image": "https://madewithpain.com/images/birds2020.webp",
+        "description": "Tätowierer in Straubing, Bayern. Individuelle Tattoos nach Terminvereinbarung.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Theresienplatz 31",
+          "postalCode": "94315",
+          "addressLocality": "Straubing",
+          "addressRegion": "Bayern",
+          "addressCountry": "DE"
+        },
+        "telephone": "+4915202622476",
+        "founder": { "@id": "https://madewithpain.com/#andrew" },
+        "areaServed": [
+          { "@type": "City", "name": "Straubing" },
+          { "@type": "City", "name": "Bogen" },
+          { "@type": "City", "name": "Plattling" },
+          { "@type": "City", "name": "Deggendorf" },
+          { "@type": "City", "name": "Landshut" },
+          { "@type": "City", "name": "Regensburg" }
+        ],
+        "sameAs": ["https://www.instagram.com/andrew_borisyuk"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://madewithpain.com/#andrew",
+        "name": "Andrew Borisyuk",
+        "jobTitle": "Tätowierer",
+        "url": "https://madewithpain.com/info.html",
+        "workLocation": { "@type": "City", "name": "Straubing" },
+        "worksFor": { "@id": "https://madewithpain.com/#business" },
+        "sameAs": ["https://www.instagram.com/andrew_borisyuk"],
+        "knowsAbout": ["Realismus Tattoo", "Fineline Tattoo", "Blackwork Tattoo"]
+      }
     ]
   }
   </script>
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    header h1 { margin: 0; font-size: inherit; font-weight: inherit; }
+  </style>
 </head>
+
 <body>
   <header>
     <div class="logo-container">
-      <a href="index.html" class="logo">MADE WITH PAIN</a>
-      <p id="subtitle" class="subtitle">Tattoo Artist based in Bayern, Germany</p>
+      <h1><a href="index.html" class="logo">TATTOO ARTIST ANDREW BORISYUK</a></h1>
+      <p id="subtitle" class="subtitle">Madewithpain · Straubing, Bayern</p>
     </div>
     <nav>
       <a id="portfolio-btn" href="index.html" class="active">Portfolio</a>
       <a id="info-btn" href="info.html">Info</a>
-      <a id="contacts-btn" href="contacts.html">Contacts</a>
-      <button id="lang-toggle" onclick="toggleLang()">DE</button>
+      <a id="contacts-btn" href="contacts.html">Kontakt</a>
+      <button id="lang-toggle" type="button" onclick="toggleLang()">EN</button>
     </nav>
   </header>
 
-  <!-- SEO: sichtbar nur für Suchmaschinen -->
-  <h1 class="seo-hidden">Tattoo Straubing – Realism, Fineline, Blackwork | Andrew Borisyuk Tattoo Artist</h1>
-  <p class="seo-hidden">
-    Andrew Borisyuk ist Tattoo Artist in Straubing, Bayern.
-    Spezialisiert auf Schwarz-Grau Realismus, Fineline und Blackwork Tattoos.
-    Tattoo Termine in Straubing sowie für Kunden aus Regensburg, Deggendorf, Landshut und Nürnberg.
-    Professionelle individuelle Tattoo Designs mit Fokus auf Qualität und Details.
-  </p>
-
-  <main id="gallery"></main>
+  <main id="gallery" aria-label="Portfolio">
+    <div class="item"><div class="content">
+      <img src="images/birdshealed2017.webp" alt="Vögel Tattoo (Neotraditional) von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#neotraditional</span><span style="background:#000000">#2017</span><span style="background:#10b981">#healed</span></div>
+    </div></div>
+    <div class="item"><div class="content">
+      <img src="images/gendalf2023.webp" alt="Gandalf Tattoo (Contemporary) von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#contemporary</span><span style="background:#000000">#2019</span><span style="background:#f43f5e">#fresh</span></div>
+    </div></div>
+    <div class="item"><div class="content">
+      <img src="images/cosmos2019.webp" alt="Kosmos Tattoo (Realismus) von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#realistic</span><span style="background:#000000">#2019</span><span style="background:#f43f5e">#fresh</span></div>
+    </div></div>
+    <div class="item"><div class="content">
+      <img src="images/forest2017.webp" alt="Wald Tattoo (Grafisch) von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#graphic</span><span style="background:#000000">#2017</span><span style="background:#10b981">#healed</span></div>
+    </div></div>
+    <div class="item"><div class="content">
+      <img src="images/birds2020.webp" alt="Vögel Tattoo (Grafisch) von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#graphic</span><span style="background:#000000">#2020</span><span style="background:#f43f5e">#fresh</span></div>
+    </div></div>
+    <div class="item"><div class="content">
+      <img src="images/flovers2019.webp" alt="Blumen Tattoo (Neotraditional) von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#neotraditional</span><span style="background:#000000">#2019</span><span style="background:#10b981">#healed</span></div>
+    </div></div>
+    <div class="item"><div class="content">
+      <img src="images/tip2024.webp" alt="Grafisches Tattoo von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#graphic</span><span style="background:#000000">#2024</span><span style="background:#10b981">#healed</span></div>
+    </div></div>
+    <div class="item"><div class="content">
+      <img src="images/redbull2024.webp" alt="Contemporary Tattoo von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#contemporary</span><span style="background:#000000">#2024</span><span style="background:#f43f5e">#fresh</span></div>
+    </div></div>
+    <div class="item"><div class="content">
+      <img src="images/realistic2017.webp" alt="Realismus Tattoo von Andrew Borisyuk, Tätowierer in Straubing" loading="lazy">
+      <div class="tags"><span style="background:#555">#realistic</span><span style="background:#000000">#2017</span><span style="background:#f43f5e">#fresh</span></div>
+    </div></div>
+  </main>
 
   <div id="modal" class="modal" onclick="closeModal()">
-    <span class="close">&times;</span>
+    <span class="close" aria-label="Schließen">&times;</span>
     <img id="modal-img" src="" alt="">
     <div id="modal-tags"></div>
   </div>
 
-  <!-- Site Map / Footer Links -->
   <footer class="site-map">
     <div class="site-map-container">
       <div class="footer-links">
         <a href="index.html">Portfolio</a>
         <a href="info.html">Info</a>
-        <a href="contacts.html">Contacts</a>
+        <a href="contacts.html">Kontakt</a>
         <a href="datenschutz.html">Datenschutzerklärung</a>
         <a href="impressum.html">Impressum</a>
       </div>
-      <div class="copyright">
-        &copy; 2026 MADE WITH PAIN
-      </div>
+      <div class="copyright">&copy; 2026 MADE WITH PAIN</div>
     </div>
   </footer>
 
   <script src="script.js"></script>
-
   <script>
-    // translation
-    let currentLang = 'en';
+    let currentLang = 'de';
+
     const texts = {
-      en: {
-        subtitle: "Tattoo Artist in Straubing, Bavaria",
-        contacts: "Contacts",
-        info: "Info",
-        portfolio: "Portfolio",
-        title: "Tattoo Straubing – Andrew Borisyuk Tattoo Artist | Realism, Fineline, Blackwork"
-      },
       de: {
-        subtitle: "Tattoo Artist in Straubing, Bayern",
-        contacts: "Kontakt",
-        info: "Info",
-        portfolio: "Portfolio",
-        title: "Tattoo Straubing – Andrew Borisyuk Tätowierer | Realismus, Fineline, Blackwork"
+        title: "Tätowierer Straubing – Andrew Borisyuk | Tattoo Artist",
+        subtitle: "Madewithpain · Straubing, Bayern",
+        portfolio: "Portfolio", info: "Info", contacts: "Kontakt", toggle: "EN"
+      },
+      en: {
+        title: "Tattoo Artist Straubing – Andrew Borisyuk",
+        subtitle: "Madewithpain · Straubing, Bavaria",
+        portfolio: "Portfolio", info: "Info", contacts: "Contacts", toggle: "DE"
       }
     };
 
     function setLang(lang) {
       currentLang = lang;
-      document.getElementById('subtitle').innerText = texts[lang].subtitle;
-      document.getElementById('portfolio-btn').innerText = texts[lang].portfolio;
-      document.getElementById('info-btn').innerText = texts[lang].info;
-      document.getElementById('contacts-btn').innerText = texts[lang].contacts;
-      document.title = texts[lang].title;
-      document.getElementById('lang-toggle').innerText = (lang === 'en') ? 'DE' : 'EN';
+      const t = texts[lang];
+      document.documentElement.lang = lang;
+      document.title = t.title;
+      document.getElementById('subtitle').textContent = t.subtitle;
+      document.getElementById('portfolio-btn').textContent = t.portfolio;
+      document.getElementById('info-btn').textContent = t.info;
+      document.getElementById('contacts-btn').textContent = t.contacts;
+      document.getElementById('lang-toggle').textContent = t.toggle;
     }
 
     function toggleLang() {
-      setLang(currentLang === 'en' ? 'de' : 'en');
+      setLang(currentLang === 'de' ? 'en' : 'de');
     }
 
-    // initialization
-    document.addEventListener('DOMContentLoaded', function() {
-      setLang(currentLang);
+    document.addEventListener('DOMContentLoaded', function () {
+      const param = new URLSearchParams(window.location.search).get('lang');
+      setLang(param === 'en' ? 'en' : 'de');
     });
   </script>
 </body>

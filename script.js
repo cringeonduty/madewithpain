@@ -1,4 +1,3 @@
-// === works ===
 const works = [
   { src: "images/birdshealed2017.webp", tags: ["neotraditional", "2017", "healed"] },
   { src: "images/gendalf2023.webp", tags: ["contemporary", "2019", "fresh"] },
@@ -129,7 +128,6 @@ const works = [
   { src: "images/leaves2019.webp", tags: ["neotraditional", "2019", "fresh"] },
 ];
 
-// tag colors ===
 const tagColors = {
   blackwork: "#222222",
   dotwork: "#3b82f6",
@@ -154,14 +152,12 @@ const tagColors = {
 
 function getTagColor(tag){ return tagColors[tag] || "#555"; }
 
-// === gallery ===
 const gallery = document.getElementById("gallery");
 let currentFilter = null;
 let itemsToShow = 9;
 let allWorks = works;
 let isLoading = false;
 
-// button Show More
 const showMoreContainer = document.createElement("div");
 showMoreContainer.className = "show-more-container";
 showMoreContainer.style.textAlign = "center";
@@ -174,49 +170,136 @@ showMoreBtn.onclick = loadMore;
 
 showMoreContainer.appendChild(showMoreBtn);
 
+const altMotifs = {
+  "birds": "Vögel",
+  "birdshealed": "Vögel",
+  "freshbirds": "Vögel",
+  "birdsdot": "Vögel",
+  "bird": "Vogel",
+  "gendalf": "Gandalf",
+  "cosmos": "Kosmos",
+  "forest": "Wald",
+  "forestcloseum": "Wald",
+  "flovers": "Blumen",
+  "flowersbng": "Blumen",
+  "flowerscolor": "Blumen",
+  "dotflower": "Blumen",
+  "flower": "Blume",
+  "neckflowers": "Blumen am Hals",
+  "peony": "Pfingstrose",
+  "sunflower": "Sonnenblume",
+  "lotus": "Lotus",
+  "tree": "Baum",
+  "leaves": "Blätter",
+  "statue": "Statue",
+  "david": "David-Statue",
+  "buddaball": "Buddha",
+  "budda": "Buddha",
+  "fox": "Fuchs",
+  "snakes": "Schlangen",
+  "snake": "Schlange",
+  "colorsnake": "Schlange",
+  "face": "Gesicht",
+  "dove": "Taube",
+  "ornamentfront": "Ornament Vorderseite",
+  "ornamentback": "Ornament Rücken",
+  "knight": "Ritter",
+  "wolf": "Wolf",
+  "raven": "Rabe",
+  "boat": "Boot",
+  "boatandvawes": "Boot und Wellen",
+  "cards": "Spielkarten",
+  "card": "Spielkarte",
+  "column": "Säule",
+  "ankor": "Anker",
+  "watches": "Uhren",
+  "monopoly": "Monopoly",
+  "panter": "Panther",
+  "scorpion": "Skorpion",
+  "spyder": "Spinne",
+  "spider": "Spinne",
+  "knee": "Knie",
+  "sleevebng": "Sleeve",
+  "eye": "Auge",
+  "fisher": "Fischer",
+  "head": "Kopf",
+  "coloseum": "Kolosseum",
+  "medieval": "Mittelalter",
+  "lamp": "Lampe",
+  "owl": "Eule",
+  "turtle": "Schildkröte",
+  "skull": "Totenkopf",
+  "india": "Indien",
+  "elephant": "Elefant",
+  "hends": "Hände",
+  "hands": "Hände",
+  "abstrakthand": "Hand",
+  "bulldog": "Bulldogge",
+  "ship": "Schiff",
+  "castle": "Burg",
+  "parrot": "Papagei",
+  "parrothealed": "Papagei",
+  "viking": "Wikinger",
+  "lighthouse": "Leuchtturm",
+  "lighthousehealed": "Leuchtturm",
+  "torch": "Fackel",
+  "falcon": "Falke",
+  "tigerback": "Tiger am Rücken",
+  "beatle": "Käfer",
+  "gothic": "Gothic",
+  "kraken": "Kraken",
+  "leo": "Löwe",
+  "bafomet": "Baphomet",
+  "animegirl": "Anime-Mädchen"
+};
+
+const altStylesShort = {
+  "realistic": "Realismus",
+  "realistik": "Realismus",
+  "neotraditional": "Neotraditional",
+  "graphic": "Grafisch",
+  "illustration": "Illustration",
+  "anime": "Anime",
+  "sketch": "Sketch",
+  "oriental": "Japanisch",
+  "abstract": "Abstrakt",
+  "ornament": "Ornament",
+  "ornamental": "Ornament",
+  "contemporary": "Contemporary",
+  "chicano": "Chicano",
+  "fineline": "Fineline"
+};
+
+const altStylesFull = {
+  "realistic": "Realismus Tattoo",
+  "realistik": "Realismus Tattoo",
+  "neotraditional": "Neotraditional Tattoo",
+  "graphic": "Grafisches Tattoo",
+  "illustration": "Illustratives Tattoo",
+  "anime": "Anime Tattoo",
+  "sketch": "Sketch Tattoo",
+  "oriental": "Japanisches Tattoo",
+  "abstract": "Abstraktes Tattoo",
+  "ornament": "Ornament Tattoo",
+  "ornamental": "Ornament Tattoo",
+  "contemporary": "Contemporary Tattoo",
+  "chicano": "Chicano Tattoo",
+  "fineline": "Fineline Tattoo"
+};
+
 function buildAltText(work) {
-  const styles = [
-    "Schwarz-Grau Tattoo",
-    "Blackwork Tattoo",
-    "Fineline Tattoo",
-    "Porträt Tattoo",
-    "Realistic Tattoo",
-    "Japanese Tattoo",
-    "Blackout Tattoo",
-    "Cyber Sigilism Tattoo",
-    "Anime Tattoo",
-    "Chicano Tattoo"
-  ];
-
-  const locations = [
-    "Straubing", "Nürnberg", "Regensburg", "Deggendorf",
-    "Landshut", "Ingolstadt", "Bayern"
-  ];
-
-  const tagToStyle = {
-    "realistic": "Realistic Tattoo",
-    "neotraditional": "Schwarz-Grau Tattoo",
-    "graphic": "Blackwork Tattoo",
-    "fineline": "Fineline Tattoo",
-    "anime": "Anime Tattoo",
-    "chicano": "Chicano Tattoo",
-    "sketch": "Blackwork Tattoo",
-    "oriental": "Japanese Tattoo",
-    "abstract": "Cyber Sigilism Tattoo"
-  };
-  
-  let styleFromTag = null;
+  const name = work.src.split("/").pop().replace(/\.webp$/, "").replace(/\d+$/, "");
+  const motif = altMotifs[name];
+  let shortStyle = null;
+  let fullStyle = null;
   for (const tag of work.tags) {
-    if (tagToStyle[tag]) {
-      styleFromTag = tagToStyle[tag];
-      break;
-    }
+    if (altStylesShort[tag]) { shortStyle = altStylesShort[tag]; fullStyle = altStylesFull[tag]; break; }
   }
-  
-  const styleLabel = styleFromTag || styles[Math.floor(Math.random() * styles.length)];
-  const locationLabel = locations[Math.floor(Math.random() * locations.length)];
-
-  return `${styleLabel} – Andrew Borisyuk Tattoo Artist ${locationLabel}, Bayern`;
+  const who = "von Andrew Borisyuk, Tätowierer in Straubing";
+  if (motif && shortStyle) return `${motif} Tattoo (${shortStyle}) ${who}`;
+  if (motif) return `${motif} Tattoo ${who}`;
+  if (fullStyle) return `${fullStyle} ${who}`;
+  return `Tattoo ${who}`;
 }
 
 function renderGallery(filterTag = null){
@@ -346,6 +429,4 @@ window.addEventListener('resize', () => {
   resizeTimeout = setTimeout(resizeAllMasonryItems, 100);
 });
 
-window.addEventListener('load', () => { 
-  renderGallery(); 
-});
+renderGallery();

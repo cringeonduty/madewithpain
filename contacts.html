@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacts — MADE WITH PAIN Tattoo artist based in Bavaria, Germany</title>
+  <title>Kontakt &amp; Termin – Andrew Borisyuk, Tätowierer Straubing</title>
+  <meta name="description" content="Tattoo-Termin oder Beratung in Straubing anfragen – per E-Mail, WhatsApp oder Instagram. Studio am Theresienplatz 31, Termine nach Vereinbarung.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://madewithpain.com/contacts.html">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
@@ -77,29 +80,35 @@
   <header>
     <div class="logo-container">
       <a href="index.html" class="logo">TATTOO ARTIST ANDREW BORISYUK</a>
-      <p id="subtitle" class="subtitle">Madewithpain · Straubing, Bavaria</p>
+      <p id="subtitle" class="subtitle">Madewithpain · Straubing, Bayern</p>
     </div>
     <nav>
       <a id="portfolio-btn" href="index.html">Portfolio</a>
       <a id="info-btn" href="info.html">Info</a>
-      <a id="contacts-btn" href="contacts.html" class="active">Contacts</a>
-      <button id="lang-toggle" onclick="toggleLang()">DE</button>
+      <a id="contacts-btn" href="contacts.html" class="active">Kontakt</a>
+      <button id="lang-toggle" onclick="toggleLang()">EN</button>
     </nav>
   </header>
 
   <main>
     <section class="contact-section">
-      <div id="contact-text"></div>
+      <div id="contact-text">Bitte senden Sie mir eine E-Mail mit einer Beschreibung Ihrer Idee und, falls vorhanden, entsprechenden Referenzen oder Beispielen. Geben Sie bitte auch ungefähr an, wann Sie einen Termin für eine Tattoo-Sitzung oder Beratung wünschen.
+
+Sie können auch gerne meine Instagram-Seite besuchen, um sich weitere Arbeiten von mir anzusehen. Wenn Sie eine dringende Frage haben oder mich schnell erreichen müssen, können Sie mir über WhatsApp schreiben.
+
+Beratungen und Tattoo-Sitzungen in einem Tattoo-Studio in Straubing (nur nach Terminvereinbarung) 👇</div>
       
       <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2653.085703628319!2d12.56792531564965!3d48.88133877928772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a4d3f8e8e8e8e9%3A0x123456789abcdef!2sTheresienplatz%2031%2C%2094315%20Straubing!5e0!3m2!1sen!2sde!4v1620000000000!5m2!1sen!2sde"
-          allowfullscreen=""
-          loading="lazy">
+        <iframe
+          src="https://www.google.com/maps?q=Theresienplatz+31,+94315+Straubing&hl=de&z=16&output=embed"
+          title="Tattoo-Studio Straubing, Theresienplatz 31"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
       
-      <div class="address">📍 Theresienpl. 31, 94315 Straubing, Germany</div>
+      <div class="address">📍 Theresienplatz 31, 94315 Straubing</div>
       
       <div class="contact-links">
         <a href="https://wa.me/+4915202622476" target="_blank">WhatsApp</a>
@@ -115,7 +124,7 @@
       <div class="footer-links">
         <a href="index.html">Portfolio</a>
         <a href="info.html">Info</a>
-        <a href="contacts.html">Contacts</a>
+        <a href="contacts.html">Kontakt</a>
         <a href="datenschutz.html">Datenschutzerklärung</a>
         <a href="impressum.html">Impressum</a>
       </div>
@@ -126,12 +135,14 @@
   </div>
 
   <script>
-    let currentLang = 'en';
+    let currentLang = 'de';
 
     const texts = {
       en: {
         contact: "Please send me an email with a description of your idea and, if available, any relevant references or examples. Please also let me know approximately when you would like to have an appointment for a tattoo session or consultation.\n\nYou are also welcome to visit my Instagram page to see more of my work. If you have an urgent question or need to reach me quickly, you can contact me via WhatsApp.\n\nConsultations and tattoo sessions at a tattoo studio in Straubing (by appointment only) 👇",
         subtitle: "Madewithpain · Straubing, Bavaria",
+        title: "Contact & Appointments – Andrew Borisyuk, Tattoo Artist Straubing",
+        description: "Request a tattoo appointment or consultation in Straubing by email, WhatsApp or Instagram. Studio at Theresienplatz 31, by appointment only.",
         portfolio: "Portfolio",
         info: "Info",
         contacts: "Contacts",
@@ -140,6 +151,8 @@
       de: {
         contact: "Bitte senden Sie mir eine E-Mail mit einer Beschreibung Ihrer Idee und, falls vorhanden, entsprechenden Referenzen oder Beispielen. Geben Sie bitte auch ungefähr an, wann Sie einen Termin für eine Tattoo-Sitzung oder Beratung wünschen.\n\nSie können auch gerne meine Instagram-Seite besuchen, um sich weitere Arbeiten von mir anzusehen. Wenn Sie eine dringende Frage haben oder mich schnell erreichen müssen, können Sie mir über WhatsApp schreiben.\n\nBeratungen und Tattoo-Sitzungen in einem Tattoo-Studio in Straubing (nur nach Terminvereinbarung) 👇",
         subtitle: "Madewithpain · Straubing, Bayern",
+        title: "Kontakt & Termin – Andrew Borisyuk, Tätowierer Straubing",
+        description: "Tattoo-Termin oder Beratung in Straubing anfragen – per E-Mail, WhatsApp oder Instagram. Studio am Theresienplatz 31, Termine nach Vereinbarung.",
         portfolio: "Portfolio",
         info: "Info",
         contacts: "Kontakt",
@@ -149,6 +162,9 @@
 
     function setLang(lang){
       currentLang = lang;
+      document.documentElement.lang = lang;
+      document.title = texts[lang].title;
+      document.querySelector('meta[name="description"]').setAttribute('content', texts[lang].description);
       document.getElementById('contact-text').innerText = texts[lang].contact;
       document.getElementById('subtitle').innerText = texts[lang].subtitle;
       document.getElementById('portfolio-btn').innerText = texts[lang].portfolio;
@@ -167,7 +183,7 @@
       });
     }
 
-    setLang(currentLang);
+    setLang(new URLSearchParams(window.location.search).get('lang') === 'en' ? 'en' : 'de');
   </script>
 </body>
 </html>
